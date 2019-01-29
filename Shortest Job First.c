@@ -18,22 +18,22 @@ int main()
 	FILE *fp=fopen("CPU_BURST.txt","r"); //Opening the File
 
 	if(fp==NULL)
-    {
-    	printf("\nFile does not exist \n\n");
-    	return 1;
+    	{
+    		printf("\nFile does not exist \n\n");
+    		return 1;
   	}
 
   	//Read CPU Burts from file, validate and store in an Array
   	while(fscanf(fp,"%d",&temp)==1)
   	{
-    	if(temp<0)
-    	{
-      		printf("\nCPU Burst read from file is negative \n\n");
-      		return 1;
-    	}
-    	P[count]=count+1;
-    	CPU_Burst[count]=temp;
-    	count++;
+    		if(temp<0)
+    		{
+      			printf("\nCPU Burst read from file is negative \n\n");
+      			return 1;
+    		}
+    		P[count]=count+1;
+    		CPU_Burst[count]=temp;
+    		count++;
   	}
 
   	fclose(fp); //Close the file
@@ -62,14 +62,14 @@ int main()
   	//Calculation of Waiting Time and Turn Around Time considering Arrival time of all processes as 0(Zero) according to the question
   	for(i=0;i<count;i++)
   	{
-    	WT[i]=temp; //Waiting Time will be Sum of the CPU Bursts of all the processes executed before it as Arrival Time of all the processes is Zero
+    		WT[i]=temp; //Waiting Time will be Sum of the CPU Bursts of all the processes executed before it as Arrival Time of all the processes is Zero
 
-    	temp+=CPU_Burst[i];
+    		temp+=CPU_Burst[i];
 
-    	TAT[i]=temp; //Turn Around Time will be Sum of the CPU Bursts of all the processes executed before it and CPU Burst of it
+    		TAT[i]=temp; //Turn Around Time will be Sum of the CPU Bursts of all the processes executed before it and CPU Burst of it
 
-    	Avg_WT+=WT[i]; //Adding Waiting Time of all the processes
-    	Avg_TAT+=TAT[i]; //Adding Turn Around Time of all the processes
+    		Avg_WT+=WT[i]; //Adding Waiting Time of all the processes
+    		Avg_TAT+=TAT[i]; //Adding Turn Around Time of all the processes
   	}
 
   	//Calculation of Average Waiting Time and Average Turn Around Time
