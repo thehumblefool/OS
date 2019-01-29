@@ -58,28 +58,28 @@ void* teacher()
 {
   	while(1)
   	{
-    	sem_wait(&Teacher);
+    		sem_wait(&Teacher);
 
-    	int stu_no=rand()%3; //Selecting Student at random
+    		int stu_no=rand()%3; //Selecting Student at random
 
-    	switch(stu_no)
-    	{
-      		case 0 :	printf("\n Teacher Kept Paper and Question paper on the table \n");
-                		sem_post(&Student_With_Pen); //Signal the Respective Student i.e Student with Pen
-                		break;
+    		switch(stu_no)
+    		{
+      			case 0 :	printf("\n Teacher Kept Paper and Question paper on the table \n");
+                			sem_post(&Student_With_Pen); //Signal the Respective Student i.e Student with Pen
+                			break;
 
-      		case 1 :  	printf("\n Teacher Kept Pen and Question paper on the table \n");
-                		sem_post(&Student_With_Paper); //Signal the Respective Student i.e Student with Paper
-                		break;
+      			case 1 :  	printf("\n Teacher Kept Pen and Question paper on the table \n");
+                			sem_post(&Student_With_Paper); //Signal the Respective Student i.e Student with Paper
+                			break;
 
-      		case 2 :  	printf("\n Teacher Kept Pen and Paper on the table \n");
-                		sem_post(&Student_With_Q_Paper); //Signal the Respective Student i.e Student with Question Paper
-                		break;
+      			case 2 :  	printf("\n Teacher Kept Pen and Paper on the table \n");
+                			sem_post(&Student_With_Q_Paper); //Signal the Respective Student i.e Student with Question Paper
+                			break;
 
-      		default:  	break;
-    	}
+      			default:  	break;
+    		}
 
-    	sleep(2);
+    		sleep(2);
   	}
 }
 
@@ -87,15 +87,15 @@ void* studentWithPen()
 {
   	while(1)
   	{
-    	sem_wait(&Student_With_Pen);
+    		sem_wait(&Student_With_Pen);
     
-    	printf(" Student with Pen picked up Paper and Question Paper from the table and Started Assignment \n");
+    		printf(" Student with Pen picked up Paper and Question Paper from the table and Started Assignment \n");
 
-    	printf(" Student with Pen completed his Assignment \n Informing the Teacher \n");
+    		printf(" Student with Pen completed his Assignment \n Informing the Teacher \n");
 
-    	sem_post(&Teacher); //Signal the Teacher after Completion of the Assignment
+    		sem_post(&Teacher); //Signal the Teacher after Completion of the Assignment
 
-    	sleep(2);
+    		sleep(2);
   	}
 }
 
@@ -103,15 +103,15 @@ void* studentWithPaper()
 {
   	while(1)
   	{
-    	sem_wait(&Student_With_Paper);
+    		sem_wait(&Student_With_Paper);
 
-    	printf(" Student with Paper picked up Pen and Question Paper from the table and Started Assignment \n");
+    		printf(" Student with Paper picked up Pen and Question Paper from the table and Started Assignment \n");
     
-    	printf(" Student with Paper completed his Assignment \n Informing the Teacher \n");
+    		printf(" Student with Paper completed his Assignment \n Informing the Teacher \n");
 
-    	sem_post(&Teacher); //Signal the Teacher after Completion of the Assignment
+    		sem_post(&Teacher); //Signal the Teacher after Completion of the Assignment
 
-    	sleep(2);
+    		sleep(2);
   	}
 }
 
@@ -119,14 +119,14 @@ void* studentWithQPaper()
 {
   	while(1)
   	{
-    	sem_wait(&Student_With_Q_Paper);
+    		sem_wait(&Student_With_Q_Paper);
 
-    	printf(" Student with Question paper picked up Pen and Paper from the table and Started Assignment \n");
+    		printf(" Student with Question paper picked up Pen and Paper from the table and Started Assignment \n");
 
-    	printf(" Student with Question Paper completed his Assignment \n Informing the Teacher \n");
+    		printf(" Student with Question Paper completed his Assignment \n Informing the Teacher \n");
     
-    	sem_post(&Teacher); //Signal the Teacher after Completion of the Assignment
+    		sem_post(&Teacher); //Signal the Teacher after Completion of the Assignment
 
-    	sleep(2);
+    		sleep(2);
   	}
 }
